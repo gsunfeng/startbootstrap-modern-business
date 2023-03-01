@@ -12,6 +12,12 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+
+        <!-- <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+        <title>Full Screen Slider Example</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
     </head>
     <body class="d-flex flex-column h-100">
         <main class="flex-shrink-0">
@@ -45,24 +51,58 @@
                     </div>
                 </div>
             </nav>
-            <!-- Header-->
-            <header class="bg-dark py-5">
-                <div class="container px-5">
-                    <div class="row gx-5 align-items-center justify-content-center">
-                        <div class="col-lg-8 col-xl-7 col-xxl-6">
-                            <div class="my-5 text-center text-xl-start">
-                                <h1 class="display-5 fw-bolder text-white mb-2">A Bootstrap 5 template for modern businesses</h1>
-                                <p class="lead fw-normal text-white-50 mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit!</p>
-                                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                                    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a>
-                                    <a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
-                    </div>
+            <!-- 添加轮播图 -->
+            <div id="carouselExampleFullscreen" class="carousel carousel-slide-down slide" data-ride="carousel">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner " style="height: 100vh;"">
+                  <div class="carousel-item active">
+                    <img class="d-block w-100" src="assets/shouye1.jpg" alt="Slide 1" onclick="prevOrNext(event)"/>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="assets/shouye2.jpg" alt="Slide 2" onclick="prevOrNext(event)"/>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="assets/shouye3.jpg" alt="Slide 3" onclick="prevOrNext(event)"/>
+                  </div>
                 </div>
-            </header>
+                <!-- Controls -->
+                <a class="carousel-control-prev" href="#carouselExampleFullscreen" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleFullscreen" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleFullscreen" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleFullscreen" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleFullscreen" data-slide-to="2"></li>
+                </ol>
+              </div>
+          
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+              <script>
+                $(document).ready(function() {
+                  // 获取轮播图元素
+                  var carousel = $('#carouselExampleFullscreen');
+              
+                  // 绑定点击事件，判断是向前还是向后切换
+                  carousel.on('click', '.carousel-item img', function(e) {
+                    var $img = $(this);
+                    var offsetX = e.pageX - $img.offset().left;
+                    var width = $img.width();
+                    if (offsetX < width / 2) {
+                      carousel.carousel('prev');
+                    } else {
+                      carousel.carousel('next');
+                    }
+                  });
+                });
+              </script>
+              
             <!-- Features section-->
             <section class="py-5" id="features">
                 <div class="container px-5 my-5">
@@ -95,6 +135,7 @@
                     </div>
                 </div>
             </section>
+
             <!-- Testimonial section-->
             <div class="py-5 bg-light">
                 <div class="container px-5 my-5">
