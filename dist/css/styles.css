@@ -6063,12 +6063,12 @@ textarea.form-control-lg {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
+/* @media (prefers-reduced-motion: reduce) {
   .carousel-control-prev,
 .carousel-control-next {
     transition: none;
   }
-}
+} */
 
 .carousel-control-prev,
 .carousel-control-next {
@@ -6078,7 +6078,7 @@ textarea.form-control-lg {
 
 .carousel:hover .carousel-control-prev,
 .carousel:hover .carousel-control-next {
-  opacity: 1;
+  opacity: 0;
   pointer-events: auto;
 }
 
@@ -6086,17 +6086,7 @@ textarea.form-control-lg {
   color: #fff;
   text-decoration: none;
   outline: 0;
-  opacity: 0.9;
-}
-
-.carousel-control-prev-dnone{
-  /* left: 0; */
-  display: none;
-}
-
-.carousel-control-next-dnone {
-  /* right: 0; */
-  display: none;
+  opacity: 0;
 }
 
 .carousel-slide-down .carousel-item {
